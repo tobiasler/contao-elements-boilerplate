@@ -1,0 +1,19 @@
+<div class="hero-banner<?php if(!$this->backgroundImage): ?> background<?php endif; ?>">
+    <?php if($this->backgroundImagePath): ?>
+        <div class="hero-banner__background">
+            <img src="<?php echo $this->backgroundImagePath ?>" alt="<?php echo $this->backgroundImageAlt ?>">
+        </div>
+    <?php endif; ?>
+    <div class="hero-banner__wrapper">
+        <div class="hero-banner__content">
+            <div class="headline">
+                <<?php echo $this->hl ?>>
+                    <?php echo $this->headline ?>
+                </<?php echo $this->hl ?>>
+            </div>
+            <div class="description">
+                <?php echo $this->description ?>
+            </div>
+        </div>
+    </div>
+</div>
