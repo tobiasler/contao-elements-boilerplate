@@ -1,0 +1,38 @@
+<div class="image-text<?php if ($this->layout === 'text_first'): ?> reverse<?php endif; ?>">
+    <?php
+    if (!empty($this->image)) {
+        $fileModel = \Contao\FilesModel::findByUuid($this->image);
+        if ($fileModel !== null) {
+            $imagePath = $fileModel->path;
+            $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+            $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+        }
+    }
+    ?>
+    <?php if (!empty($this->headline)): ?>
+        <div class="image-text__headline">
+            <<?php echo $this->hl; ?>>
+                <?php echo $this->headline; ?>
+            </<?php echo $this->hl; ?>>
+        </div>
+    <?php endif; ?>
+    <div class="image-text__wrapper">
+        <?php if (!empty($imagePath)): ?>
+            <div class="image-text__image">
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+            </div>
+        <?php endif; ?>
+        
+        <div class="image-text__content">
+            <div class="image-text__text">
+                <?php echo $this->text; ?>
+            </div>
+            
+            <?php if ($this->addButton): ?>
+                <div class="image-text__button">
+                    <a href="<?php echo $this->buttonLink; ?>"><?php echo $this->buttonText; ?></a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
