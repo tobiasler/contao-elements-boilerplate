@@ -1,0 +1,123 @@
+.three-tile-header {
+
+    &__tiles-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    &__tile {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 200px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+        }
+
+        &:hover {
+            &::after {
+                transform: rotate(-1deg);
+            }
+        }
+
+    }
+
+    &__link {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        z-index: 101;
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        z-index: 10;
+        object-fit: cover;
+    }
+
+    &__content {
+        color: white;
+        z-index: 100;
+        position: relative;
+    }
+
+    &__text-container {
+        text-align: center;
+        max-width: 1360px;
+        margin: 0 auto;
+    }
+
+    @media screen and (min-width: 768px)  {
+        &__tiles-wrapper {
+            flex-direction: row;
+            justify-content: center;
+            min-height: 250px;
+            gap: 40px;
+        }
+
+        &__tile {
+            &::after {
+                bottom: -16px;
+                left: -16px;
+            } 
+            &:nth-of-type(2)::after {
+                background-color: yellowgreen;
+            }
+    
+            &:nth-of-type(1), &:nth-of-type(3) {
+                align-self: end;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1024px)  {
+        &__tiles-wrapper {
+            flex-direction: row;
+            min-height: 350px;
+        }
+
+        &__tile {
+            width: 300px;
+            height: 300px;       
+        }
+
+        &__image {
+            width: 300px;
+            height: 300px;
+        }
+    }
+
+    @media screen and (min-width: 1400px)  {
+        &__tiles-wrapper {
+            flex-direction: row;
+            min-height: 500px;
+            gap: 80px;
+            justify-content: start;
+        }
+
+        &__tile {
+            width: 400px;
+            height: 400px;       
+        }
+
+        &__image {
+            width: 400px;
+            height: 400px;
+        }
+    }
+}

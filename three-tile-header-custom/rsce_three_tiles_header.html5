@@ -1,0 +1,49 @@
+<div class="three-tile-header">
+    <?php if (!empty($this->tiles) && is_array($this->tiles)): ?>
+        <div class="three-tile-header__tiles">
+            <div class="three-tile-header__tiles-wrapper">
+                <?php foreach ($this->tiles as $tile): ?>
+                    <div class="three-tile-header__tile">
+                        <a href="<?php echo $tile->linkTarget; ?>" aria-label="<?php echo $tile->linkText; ?>" class="three-tile-header__link">
+                            <?php if (!empty($tile->image)): ?>
+                                <?php
+                                $fileModel = \Contao\FilesModel::findByUuid($tile->image);
+                                if ($fileModel !== null):
+                                    $imagePath = $fileModel->path;
+                                    $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                                    $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                                ?>
+                                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>" class="three-tile-header__image">
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <div class="three-tile-header__content">
+                                <?php if (!empty($tile->headline)): ?>
+                                    <h3 class="headlien"><?php echo $tile->headline; ?></h3>
+                                <?php endif; ?>
+                                <?php if (!empty($tile->subline)): ?>
+                                    <p class="subline"><?php echo $tile->subline; ?></p>
+                                <?php endif; ?>
+                                <?php if (!empty($tile->linkText)): ?>
+                                    <p class="link-text"><?php echo $tile->linkText; ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="three-tile-header__text-container">
+        <?php if (!empty($this->headline)): ?>
+            <<?php echo $this->hl; ?> class="headline">
+                <?php echo $this->headline; ?>
+            </<?php echo $this->hl; ?>>
+        <?php endif; ?>
+        <?php if (!empty($this->text)): ?>
+            <div class="description"><?php echo $this->text; ?></div>
+        <?php endif; ?>
+        <?php if ($this->addButton): ?>
+            <a class="btn" href="<?php echo $this->buttonLink; ?>"><?php echo $this->buttonText; ?></a>
+        <?php endif; ?>
+    </div>
+</div>
