@@ -1,19 +1,31 @@
 <div class="hero-banner<?php if(!$this->backgroundImage): ?> background<?php endif; ?>">
-    <?php if($this->backgroundImagePath): ?>
+    <?php if (!empty($this->backgroundImage)): ?>
         <div class="hero-banner__background">
-            <img src="<?php echo $this->backgroundImagePath ?>" alt="<?php echo $this->backgroundImageAlt ?>">
+            <?php
+            $fileModel = \Contao\FilesModel::findByUuid($this->backgroundImage);
+            if ($fileModel !== null):
+                $imagePath = $fileModel->path;
+                $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+            ?>
+                <img src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($imageAlt); ?>">
+            <?php endif; ?>
         </div>
     <?php endif; ?>
     <div class="hero-banner__wrapper">
         <div class="hero-banner__content">
-            <div class="headline">
-                <<?php echo $this->hl ?>>
-                    <?php echo $this->headline ?>
-                </<?php echo $this->hl ?>>
-            </div>
-            <div class="description">
-                <?php echo $this->description ?>
-            </div>
+            <?php if (!empty($this->headline)): ?>
+                <div class="headline">
+                    <<?php echo !empty($this->hl) ? $this->hl : 'h2'; ?>>
+                        <?php echo htmlspecialchars($this->headline); ?>
+                    </<?php echo !empty($this->hl) ? $this->hl : 'h2'; ?>>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($this->description)): ?>
+                <div class="description">
+                    <?php echo $this->description; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
