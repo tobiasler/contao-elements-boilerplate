@@ -1,0 +1,30 @@
+<div class="icon-slider">
+    <div class="icon-swiper">
+        <div class="swiper-wrapper">
+            <?php foreach ($this->slides as $slide): ?>
+                <div class="swiper-slide">
+                    <?php if (!empty($slide->icon)): ?>
+                        <?php
+                        $fileModel = \Contao\FilesModel::findByUuid($slide->icon);
+                        if ($fileModel !== null):
+                            $imagePath = $fileModel->path;
+                            $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                            $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                        ?>
+                            <div class="icon-slider__image">
+                                <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>" class="icon-slider__icon">
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="icon-slider__benefit">
+                        <p><?php echo $slide->benefit ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      
+</div>
+
+
