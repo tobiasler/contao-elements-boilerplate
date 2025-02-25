@@ -1,0 +1,81 @@
+<div class="team-collection">
+    <!-- Advisers Section -->
+    <div class="team-section advisers">
+        <h2>Beiratsmitglieder</h2>
+        <?php foreach ($this->advisers as $adviser): ?>
+            <div class="team-member">
+                <?php
+                $fileModel = \Contao\FilesModel::findByUuid($adviser['image']);
+                if ($fileModel !== null):
+                    $imagePath = $fileModel->path;
+                    $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                    $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+                <?php endif; ?>
+                <h3><?php echo $adviser['name']; ?></h3>
+                <p><?php echo $adviser['position']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Managers Section -->
+    <div class="team-section managers">
+        <h2>Geschäftsführungsmitglieder</h2>
+        <?php foreach ($this->managers as $manager): ?>
+            <div class="team-member">
+                <?php
+                $fileModel = \Contao\FilesModel::findByUuid($manager['image']);
+                if ($fileModel !== null):
+                    $imagePath = $fileModel->path;
+                    $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                    $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+                <?php endif; ?>
+                <h3><?php echo $manager['name']; ?></h3>
+                <p><?php echo $manager['position']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Extended Managers Section -->
+    <div class="team-section extended-managers">
+        <h2>Erweiterte Geschäftsführungsmitglieder</h2>
+        <?php foreach ($this->extended_managers as $extended_manager): ?>
+            <div class="team-member">
+                <?php
+                $fileModel = \Contao\FilesModel::findByUuid($extended_manager['image']);
+                if ($fileModel !== null):
+                    $imagePath = $fileModel->path;
+                    $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                    $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+                <?php endif; ?>
+                <h3><?php echo $extended_manager['name']; ?></h3>
+                <p><?php echo $extended_manager['position']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Operational Managers Section -->
+    <div class="team-section operational-managers">
+        <h2>Operative Geschäftsführungsmitglieder</h2>
+        <?php foreach ($this->operational_managers as $operational_manager): ?>
+            <div class="team-member">
+                <?php
+                $fileModel = \Contao\FilesModel::findByUuid($operational_manager['image']);
+                if ($fileModel !== null):
+                    $imagePath = $fileModel->path;
+                    $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                    $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                ?>
+                    <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+                <?php endif; ?>
+                <h3><?php echo $operational_manager['name']; ?></h3>
+                <p><?php echo $operational_manager['position']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

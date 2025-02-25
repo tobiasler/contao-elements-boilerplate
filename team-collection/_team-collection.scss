@@ -1,0 +1,58 @@
+.team-collection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-members {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (min-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .team-member {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 0.5rem;
+                background-color: #f9f9f9;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 50%;
+                    margin-bottom: 1rem;
+                }
+
+                h3 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
