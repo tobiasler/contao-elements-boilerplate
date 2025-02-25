@@ -1,0 +1,32 @@
+<div class="location-tiles">
+    <div class="location-tiles__wrapper">
+        <?php foreach ($this->tiles as $tile): ?>
+            <div class="location-tiles__tile">
+                <?php if ($tile->flag): ?> 
+                    <div class="location-tiles__banner">
+                        <a href="">
+                            <p>Freie Wohnung in diesen Anlagen</p>
+                        </a>
+                    </div>
+                <?php endif; ?>
+                <a href="<?php echo $tile->link; ?>" aria-label="Link zur Standorte-Seite von <?php echo $tile->location; ?> " class="location-tiles__link">
+                    <?php if (!empty($tile->image)): ?>
+                        <?php
+                        $fileModel = \Contao\FilesModel::findByUuid($tile->image);
+                        if ($fileModel !== null):
+                            $imagePath = $fileModel->path;
+                            $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+                            $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+                        ?>
+                            <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>" class="location-tiles__image">
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="location-tiles__content">
+                            <p><?php echo $tile->location; ?></p>
+                            <p><?php echo $tile->address; ?></p>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
