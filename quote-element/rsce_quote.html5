@@ -1,0 +1,17 @@
+<div class="quote <?php echo $this->background_color; ?>">
+    <div class="quote__image">
+        <?php
+        $fileModel = \Contao\FilesModel::findByUuid($this->image);
+        if ($fileModel !== null):
+            $imagePath = $fileModel->path;
+            $metaData = \Contao\StringUtil::deserialize($fileModel->meta, true);
+            $imageAlt = !empty($metaData['de']['alt']) ? $metaData['de']['alt'] : '';
+        ?>
+            <img src="<?php echo $imagePath; ?>" alt="<?php echo $imageAlt; ?>">
+        <?php endif; ?>
+        <div class="quote__subline"><?php echo $this->subline; ?></div>
+    </div>
+    <div class="quote__text">
+        <p><?php echo $this->text; ?></p>
+    </div>
+</div>
