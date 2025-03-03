@@ -1,0 +1,18 @@
+<table class="table">
+    <?php if (!empty($this->table_head_1) || !empty($this->table_head_2)): ?>
+        <thead>
+            <tr>
+                <th class="table__cell table__cell--80"><?php echo $this->table_head_1; ?></th>
+                <th class="table__cell table__cell--20"><?php echo $this->table_head_2; ?></th>
+            </tr>
+        </thead>
+    <?php endif; ?>
+    <tbody>
+        <?php foreach ($this->items as $index => $item): ?>
+            <tr class="table__row">
+                <td class="table__cell table__cell--80"><?php echo $item->column_1; ?></td>
+                <td class="table__cell table__cell--20"><?php echo $item->column_2; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
