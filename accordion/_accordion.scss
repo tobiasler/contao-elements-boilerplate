@@ -1,0 +1,38 @@
+.accordion {
+    .accordion__item {
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+
+        .accordion__header {
+            background-color: #f9f9f9;
+            padding: 0;
+            cursor: pointer;
+
+            .accordion__button {
+                width: 100%;
+                text-align: left;
+                background: none;
+                border: none;
+                padding: 1rem;
+                cursor: pointer;
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .accordion__content {
+            display: none;
+            padding: 1rem;
+            background-color: #fff;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="accordion" id="accordion">
+    <?php foreach ($this->items as $index => $item): ?>
+        <div class="accordion__item">
+            <div class="accordion__header" id="heading-<?php echo $index; ?>">
+                <button class="accordion__button" aria-expanded="false" aria-controls="content-<?php echo $index; ?>">
+                    <h3><?php echo $item->title; ?></h3>
+                </button>
+            </div>
+            <div class="accordion__content" id="content-<?php echo $index; ?>" role="region" aria-labelledby="heading-<?php echo $index; ?>">
+                <?php echo $item->content; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
