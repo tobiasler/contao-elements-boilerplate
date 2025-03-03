@@ -1,0 +1,10 @@
+<div class="contact-tiles">
+    <?php foreach ($this->items as $index => $item): ?>
+        <div class="contact-tiles__item <?php echo $index === count($this->items) - 1 ? 'contact-tiles__item--full' : ''; ?>">
+            <h3><?php echo $item->location; ?></h3>
+            <p><strong>Ansprechpartner:</strong> <?php echo $item->contact_person; ?></p>
+            <p><strong>E-Mail:</strong> <a href="mailto:<?php echo $item->email; ?>"><?php echo $item->email; ?></a></p>
+            <p><strong>Telefonnummer:</strong> <a href="tel:<?php echo $item->phone; ?>"><?php echo $item->phone; ?></a></p>
+        </div>
+    <?php endforeach; ?>
+</div>
